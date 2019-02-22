@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+service PushService {
+	rpc Push(PushRequest) returns (PushResponse) {}
+}
+
+message PushRequest {
+	// APN 的推送载荷内容
+	bytes payload = 1;
+	// APNs bundleId
+	string topic = 2;
+	// APN token
+	string token = 3;
+	// 附带的其他业务定制内容
+	bytes ext = 4;
+}
+
+message PushResponse {
+	int32 status = 1;
+}
